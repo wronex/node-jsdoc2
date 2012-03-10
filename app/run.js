@@ -10,6 +10,17 @@
 print = console.log.bind(this);
 quit = process.exit.bind(this);
 
+var nodejs = {
+	os: require('os'),
+	fs: require('fs'),
+	path: require('path'),
+	vm: require('vm')
+};
+
+// TODO: Use use the correct function instead of using this hack.
+if (typeof nodejs.path.existsSync == 'undefined')
+	nodejs.path.existsSync = nodejs.fs.existsSync;
+
 /**
  * @namespace Keep track of any messages from the running script.
  */
@@ -107,16 +118,6 @@ FilePath.dir = function(path) {
 	return path.substring(0, nameStart-1);
 }
 
-// Load some NodeJS modules.
-var nodejs = {
-	os: require('os'),
-	fs: require('fs'),
-	path: require('path'),
-	vm: require('vm')
-};
-if (typeof nodejs.path.existsSync == 'undefined')
-	nodejs.path.existsSync = nodejs.fs.existsSync;
-
 /**
  * @namespace A collection of information about your system.
  */
@@ -136,20 +137,6 @@ SYS = {
 	 * @type string
 	 */
 	slash: "/",
-	
-	/**
-	 * The path to the working directory from where you ran java.
-	 * @type string
-	 * @depricated
-	 */
-	userDir: process.cwd(),
-	
-	/**
-	 * Where is Java's home folder.
-	 * @type string
-	 * @depricated
-	 */
-	javaHome: process.execPath,
 	
 	/**
 	 * The absolute path to the directory containing this script.
