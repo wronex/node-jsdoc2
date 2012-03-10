@@ -1,3 +1,21 @@
+== convertion to nodejs ==
+
+	run.js did undergo some drastic changes to its IO object to support NodeJS. 
+	Some changes where also required in the SYS object. Overall, I see no reason
+	to share run.js between Rhino and NodeJS since the differences are to great.
+
+	A function called IO.join was added to address the issue of joining two 
+	paths. The global function load() was marked as depricated (use IO.require() 
+	instead). SYS.javaHome and SYS.userDir where also marked as depricated since 
+	they serve no function.
+
+	main.js required some changes. But there should be no problem sharing 
+	main.js	between both Rhino and NodeJS after some modifications.
+
+	test.js seemd to contain a bug on line 1 where it tried to load 
+	'app/frame/Dumper.js' which would fail. It was changed to 'frame/Dumper.js' 
+	instead.
+
 == 2.4.0 ==
 
   * Fixed bug that added mutiple symbols with the same name to docs.
