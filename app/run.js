@@ -340,6 +340,6 @@ load = IO.include.bind(IO);
 
 // now run the application
 IO.include("frame.js");
-IO.include("main.node.js");
+IO.include("main.js");
 
 main();

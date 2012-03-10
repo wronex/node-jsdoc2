@@ -2,5 +2,5 @@
 set jsdoc=./
 set output=./doc/
 set input=./app
-node  "%jsdoc%/app/run.node.js" -a -d=%output% -t="%jsdoc%/templates/WouterBos" -r %input%
+node  "%jsdoc%/app/run.js" -a -d=%output% -t="%jsdoc%/templates/jsdoc" -r %input%
 pause

@@ -44,7 +44,7 @@ function main() {
 	if (JSDOC.opt.T) {
 		LOG.inform("JsDoc Toolkit running in test mode at "+new Date()+".");
 		IO.include("frame/Testrun.js");
-		IO.include("test.node.js");
+		IO.include("test.js");
 	}
 	else {
 		// a template must be defined and must be a directory path
