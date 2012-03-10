@@ -3,6 +3,10 @@
  */
 
 function main() {
+	// fetch the options
+	global.arguments = process.argv;
+	global.arguments.splice(0, 2);
+
 	IO.include("lib/JSDOC.js");
 	IO.includeDir("plugins/");
 	
@@ -40,12 +44,12 @@ function main() {
 	if (JSDOC.opt.T) {
 		LOG.inform("JsDoc Toolkit running in test mode at "+new Date()+".");
 		IO.include("frame/Testrun.js");
-		IO.include("test.js");
+		IO.include("test.node.js");
 	}
 	else {
 		// a template must be defined and must be a directory path
-		if (!JSDOC.opt.t && System.getProperty("jsdoc.template.dir")) {
-			JSDOC.opt.t = System.getProperty("jsdoc.template.dir");
+		if (!JSDOC.opt.t) {
+			JSDOC.opt.t = IO.join(SYS.pwd, '../templates/jsdoc');
 		}
 		if (JSDOC.opt.t && SYS.slash != JSDOC.opt.t.slice(-1)) {
 			JSDOC.opt.t += SYS.slash;
@@ -76,7 +80,7 @@ function main() {
 			if (typeof JSDOC.opt.t != "undefined") {
 				try {
 					// a file named "publish.js" must exist in the template directory
-					load(JSDOC.opt.t+"publish.js");
+					IO.include(IO.join(JSDOC.opt.t, "publish.js"), true);
 					
 					// and must define a function named "publish"
 					if (!publish) {

@@ -1,4 +1,4 @@
-load("app/frame/Dumper.js");
+IO.include("frame/Dumper.js");
 function symbolize(opt) {
 	symbols = null;
 	JSDOC.JsDoc(opt);
