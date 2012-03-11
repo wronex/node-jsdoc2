@@ -58,7 +58,7 @@ examples below, or as shown on the project wiki.
 On a computer running Windows a valid command line to run JsDoc
 Toolkit might look like this:
 
-	> node app\run.js -a -t=templates\jsdoc mycode.js
+	> node app/run.js -a -t=templates\jsdoc mycode.js
 
 On Mac OS X or Linux the same command would look like this:
 
