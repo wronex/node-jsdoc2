@@ -39,13 +39,13 @@ For the most up-to-date documentation on JsDoc Toolkit see the
 official wiki at http://code.google.com/p/jsdoc-toolkit/w/list
 
 
-REQUIREMENTS:
+REQUIREMENTS
 ======================================================================
 
  * NodeJS http://nodejs.org/
 
 
-USAGE:
+USAGE
 ======================================================================
 
 Running JsDoc Toolkit requires you to have NodeJS installed on your
@@ -81,7 +81,7 @@ More information about the various command line options used by JsDoc
 Toolkit are available on the project wiki.
 
 
-TESTING:
+TESTING
 ======================================================================
 
 To run the suite of unit tests included with JsDoc Toolkit enter this
