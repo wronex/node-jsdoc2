@@ -1,15 +1,27 @@
-This version of JsDoc have been modified to run ontop of NodeJS
-instead of Rhino. Running on NodeJS instead of Rhino drastically 
-increases the performance of JsDoc. Some users have reported that it
-is now possible to compile documentation in 10 seconds instead of 250.
+JSDOC FOR NODEJS
+======================================================================
+
+This version of JsDoc have been modified to run on NodeJs instead of
+Rhino. The reason is simple: performance. NodeJs uses Google's V8 
+JavaScript engine with far better performance than Mozilla's Rhino.
+
+Users have reported that it is possible to compile documentation in
+about 10 seconds running NodeJs instead of 250 seconds running Rhino.
+See test_result.txt for more details.
+
+Utilizing NodeJs brings another advantage: there is no need for Java
+nor the Java runtime. Which means less to download and less to 
+distribute. It also decreases the startup time of JsDoc which means
+that the documentation for small project can now be generated much 
+faster than before.
 
 This is not an official JsDoc release. For the official version of 
 JsDoc that runs ontop of Rhino, please visit
 http://code.google.com/p/jsdoc-toolkit/
 
-======================================================================
 
-DESCRIPTION:
+DESCRIPTION
+======================================================================
 
 This is the source code for JsDoc Toolkit, an automatic documentation
 generation tool for JavaScript. It is written in JavaScript and is run
@@ -26,15 +38,15 @@ project homepage at http://code.google.com/p/jsdoc-toolkit/
 For the most up-to-date documentation on JsDoc Toolkit see the 
 official wiki at http://code.google.com/p/jsdoc-toolkit/w/list
 
-======================================================================
 
 REQUIREMENTS:
-
-NodeJS http://nodejs.org/
-
 ======================================================================
 
+ * NodeJS http://nodejs.org/
+
+
 USAGE:
+======================================================================
 
 Running JsDoc Toolkit requires you to have NodeJS installed on your
 computer. For more information see http://nodejs.org/
@@ -46,11 +58,11 @@ examples below, or as shown on the project wiki.
 On a computer running Windows a valid command line to run JsDoc
 Toolkit might look like this:
 
-> node app\run.js -a -t=templates\jsdoc mycode.js
+	> node app\run.js -a -t=templates\jsdoc mycode.js
 
 On Mac OS X or Linux the same command would look like this:
 
-$ node app/run.js -a -t=templates/jsdoc mycode.js
+	$ node app/run.js -a -t=templates/jsdoc mycode.js
 
 The above assumes your current working directory contains jsrun.jar,
 the "app" and "templates" subdirectories from the standard JsDoc
@@ -63,30 +75,31 @@ The output documentation files will be saved to a new directory named
 
 For help (usage notes) enter this on the command line:
 
-$ node app/run.js --help
+	$ node app/run.js --help
 
 More information about the various command line options used by JsDoc
 Toolkit are available on the project wiki.
 
-======================================================================
 
 TESTING:
+======================================================================
 
 To run the suite of unit tests included with JsDoc Toolkit enter this
 on the command line:
 
-$ node app/run.js -T
+	$ node app/run.js -T
 
 To see a dump of the internal data structure that JsDoc Toolkit has
 built from your source files use this command:
 
-$ node app/run.js mycode.js -Z
+	$ node app/run.js mycode.js -Z
 
+
+LICENSE
 ======================================================================
 
-LICENSE:
-
 JSDoc.pm
+----------------------------------------------------------------------
 
 This project is based on the JSDoc.pm tool, created by Michael
 Mathews and Gabriel Reid. More information on JsDoc.pm can
@@ -95,7 +108,9 @@ be found on the JSDoc.pm homepage: http://jsdoc.sourceforge.net/
 Complete documentation on JsDoc Toolkit can be found on the project
 wiki at http://code.google.com/p/jsdoc-toolkit/w/list
 
+
 JsDoc Toolkit
+----------------------------------------------------------------------
 
 All code specific to JsDoc Toolkit are free, open source and licensed
 for use under the X11/MIT License.
