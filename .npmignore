@@ -1,6 +1,7 @@
-.git
-.backup
+.git/
+.backup/
 node_modules/
+doc/
 
 Thumbs.db
 Desktop.ini

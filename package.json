@@ -34,9 +34,7 @@
 	"bugs": {
 		"url": "https://github.com/wronex/node-jsdoc2/issues"
 	},
-	"bin": {
-		"jsdoc2": "./app/run.js"
-	},
+	"bin": "./app/run.js",
 	"licenses": [
 		{
 			"type": "MIT",
