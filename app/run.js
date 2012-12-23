@@ -17,10 +17,6 @@ var nodejs = {
 	vm: require('vm')
 };
 
-// TODO: Use use the correct function instead of using this hack.
-if (typeof nodejs.path.existsSync == 'undefined')
-	nodejs.path.existsSync = nodejs.fs.existsSync;
-
 /**
  * @namespace Keep track of any messages from the running script.
  */
@@ -263,7 +259,7 @@ IO = {
 	 * @type boolean
 	 */
 	exists: function(/**string*/ path) {
-		return nodejs.path.existsSync(nodejs.path.resolve(path));
+		return nodejs.fs.existsSync(nodejs.path.resolve(path));
 	},
 
 	/**

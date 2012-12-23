@@ -42,32 +42,36 @@ official wiki at http://code.google.com/p/jsdoc-toolkit/w/list
 REQUIREMENTS
 ======================================================================
 
+Running JsDoc Toolkit requires you to have NodeJS installed on your
+computer. For more information see http://nodejs.org/
+
  * NodeJS http://nodejs.org/
 
+
+INSTALLATION
+======================================================================
+
+Use NPM to download and install the page
+
+	$ [sudo] npm install -g jsdoc2
 
 USAGE
 ======================================================================
 
-Running JsDoc Toolkit requires you to have NodeJS installed on your
-computer. For more information see http://nodejs.org/
-
-Before running the JsDoc Toolkit app you should change your current
-working directory to the jsdoc-toolkit folder. Then follow the
-examples below, or as shown on the project wiki.
-
 On a computer running Windows a valid command line to run JsDoc
 Toolkit might look like this:
 
-	> node app/run.js -a -t=templates\jsdoc mycode.js
+	$ jsdoc2 -a -t=templates/jsdoc mycode.js
 
-On Mac OS X or Linux the same command would look like this:
+If you have manually downloaded and installed JsDoc instead of using
+NPM, the same command might look like this:
 
 	$ node app/run.js -a -t=templates/jsdoc mycode.js
 
-The above assumes your current working directory contains jsrun.jar,
-the "app" and "templates" subdirectories from the standard JsDoc
-Toolkit distribution and that the relative path to the code you wish
-to document is "mycode.js".
+The above assumes your current working directory contains the
+"templates" subdirectories from the standard JsDoc Toolkit
+distribution and that the relative path to the code you wish to
+document is "mycode.js".
 
 The output documentation files will be saved to a new directory named
 "out" (by default) in the current directory, or if you specify a
@@ -75,7 +79,7 @@ The output documentation files will be saved to a new directory named
 
 For help (usage notes) enter this on the command line:
 
-	$ node app/run.js --help
+	$ jsdoc2 --help
 
 More information about the various command line options used by JsDoc
 Toolkit are available on the project wiki.
@@ -87,12 +91,12 @@ TESTING
 To run the suite of unit tests included with JsDoc Toolkit enter this
 on the command line:
 
-	$ node app/run.js -T
+	$ jsdoc2 -T
 
 To see a dump of the internal data structure that JsDoc Toolkit has
 built from your source files use this command:
 
-	$ node app/run.js mycode.js -Z
+	$ jsdoc2 mycode.js -Z
 
 
 LICENSE

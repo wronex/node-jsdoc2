@@ -1,0 +1,47 @@
+{
+	"author": {
+		"name": "Michael Mathews",
+		"email": "micmath@gmail.com"
+	},
+	"name": "jsdoc2",
+	"description": "A port of JSDoc2 Toolkit that runs on Node",
+	"version": "2.4.0",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/wronex/node-jsdoc2.git"
+	},
+	"homepage": "http://wronex.github.com/node-jsdoc2",
+	"contributors": [
+		{
+			"name": "wronex",
+			"email": "code@wronex.com"
+		}
+	],
+	"keywords": [
+		"jsdoc2",
+		"jsdoc2-toolkit",
+		"toolkit",
+		"documentation",
+		"generate",
+		"doc"
+	],
+	"engines": {
+		"node": ">= 0.6.0"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {},
+	"bugs": {
+		"url": "https://github.com/wronex/node-jsdoc2/issues"
+	},
+	"bin": {
+		"jsdoc2": "./app/run.js"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://github.com/wronex/node-jsdoc2/LICENSE"
+		}
+	],
+	"preferGlobal": "true"
+}

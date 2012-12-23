@@ -1,0 +1,114 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span> 	@overview
+<span class='line'>  3</span> 	@date $Date: 2010-06-13 22:02:44 +0100 (Sun, 13 Jun 2010) $
+<span class='line'>  4</span> 	@version $Revision: 837 $ 
+<span class='line'>  5</span> 	@location $HeadURL: https://jsdoc-toolkit.googlecode.com/svn/tags/jsdoc_toolkit-2.4.0/jsdoc-toolkit/app/lib/JSDOC.js $
+<span class='line'>  6</span> 	@name JSDOC.js
+<span class='line'>  7</span>  */</span><span class="WHIT">
+<span class='line'>  8</span> 
+<span class='line'>  9</span> </span><span class="COMM">/**
+<span class='line'> 10</span> 	This is the main container for the JSDOC application.
+<span class='line'> 11</span> 	@namespace
+<span class='line'> 12</span> */</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="NAME">JSDOC</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 15</span> 
+<span class='line'> 16</span> </span><span class="COMM">/**
+<span class='line'> 17</span> 	@requires Opt
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="NAME">JSDOC.opt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Opt.get</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">	</span><span class="NAME">arguments</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">		</span><span class="NAME">a</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"allfunctions"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">		</span><span class="NAME">c</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"conf"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">		</span><span class="NAME">d</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"directory"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">		</span><span class="STRN">"D[]"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"define"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">		</span><span class="NAME">e</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"encoding"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">		</span><span class="STRN">"E[]"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"exclude"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">		</span><span class="NAME">h</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"help"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">		</span><span class="NAME">m</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"multiple"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">		</span><span class="NAME">n</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"nocode"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">		</span><span class="NAME">o</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"out"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">		</span><span class="NAME">p</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"private"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">		</span><span class="NAME">q</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"quiet"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">		</span><span class="NAME">r</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"recurse"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">		</span><span class="NAME">S</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"securemodules"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">		</span><span class="NAME">s</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"suppress"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">		</span><span class="NAME">t</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"template"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">		</span><span class="NAME">T</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"testmode"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">		</span><span class="NAME">u</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"unique"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">		</span><span class="NAME">v</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"verbose"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">		</span><span class="NAME">x</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"ext"</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="COMM">/** The current version string of this application. */</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="NAME">JSDOC.VERSION</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"2.4.0"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> 
+<span class='line'> 49</span> </span><span class="COMM">/** Print out usage information and quit. */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="NAME">JSDOC.usage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"USAGE: java -jar jsrun.jar app/run.js [OPTIONS] &lt;SRC_DIR> &lt;SRC_FILE> ..."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"OPTIONS:"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -a or --allfunctions\n          Include all functions, even undocumented ones.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -c or --conf\n          Load a configuration file.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -d=&lt;PATH> or --directory=&lt;PATH>\n          Output to this directory (defaults to \"out\").\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -D=\"myVar:My value\" or --define=\"myVar:My value\"\n          Multiple. Define a variable, available in JsDoc as JSDOC.opt.D.myVar.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -e=&lt;ENCODING> or --encoding=&lt;ENCODING>\n          Use this encoding to read and write files.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -E=\"REGEX\" or --exclude=\"REGEX\"\n          Multiple. Exclude files based on the supplied regex.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -h or --help\n          Show this message and exit.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -m or --multiples\n          Don't warn about symbols being documented more than once.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -n or --nocode\n          Ignore all code, only document comments with @name tags.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -o=&lt;PATH> or --out=&lt;PATH>\n          Print log messages to a file (defaults to stdout).\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -p or --private\n          Include symbols tagged as private, underscored and inner symbols.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -q or --quiet\n          Do not output any messages, not even warnings.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -r=&lt;DEPTH> or --recurse=&lt;DEPTH>\n          Descend into src directories.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -s or --suppress\n          Suppress source code output.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -S or --securemodules\n          Use Secure Modules mode to parse source code.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -t=&lt;PATH> or --template=&lt;PATH>\n          Required. Use this template to format the output.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -T or --test\n          Run all unit tests and exit.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -u or --unique\n          Force file names to be unique, but not based on symbol names.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -v or --verbose\n          Provide verbose feedback about what is happening.\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	</span><span class="NAME">print</span><span class="PUNC">(</span><span class="STRN">"  -x=&lt;EXT>[,EXT]... or --ext=&lt;EXT>[,EXT]...\n          Scan source files with the given extension/s (defaults to js).\n"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">	</span><span class="NAME">quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 77</span> 
+<span class='line'> 78</span> </span><span class="COMM">/*t:
+<span class='line'> 79</span> 	plan(4, "Testing JSDOC namespace.");
+<span class='line'> 80</span> 	
+<span class='line'> 81</span> 	is(
+<span class='line'> 82</span> 		typeof JSDOC,
+<span class='line'> 83</span> 		"object",
+<span class='line'> 84</span> 		"JSDOC.usage is a function."
+<span class='line'> 85</span> 	);
+<span class='line'> 86</span> 	
+<span class='line'> 87</span> 	is(
+<span class='line'> 88</span> 		typeof JSDOC.VERSION,
+<span class='line'> 89</span> 		"string",
+<span class='line'> 90</span> 		"JSDOC.VERSION is a string."
+<span class='line'> 91</span> 	);
+<span class='line'> 92</span> 	
+<span class='line'> 93</span> 	is(
+<span class='line'> 94</span> 		typeof JSDOC.usage,
+<span class='line'> 95</span> 		"function",
+<span class='line'> 96</span> 		"JSDOC.usage is a function."
+<span class='line'> 97</span> 	);
+<span class='line'> 98</span> 	
+<span class='line'> 99</span> 	is(
+<span class='line'>100</span> 		typeof JSDOC.opt,
+<span class='line'>101</span> 		"object",
+<span class='line'>102</span> 		"JSDOC.opt is a object."
+<span class='line'>103</span> 	);
+<span class='line'>104</span>  */</span><span class="WHIT">
+<span class='line'>105</span> 
+<span class='line'>106</span> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.IO</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">IO.includeDir</span><span class="PUNC">(</span><span class="STRN">"lib/JSDOC/"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span></pre></body></html>

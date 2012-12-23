@@ -1,0 +1,485 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/** 
+<span class='line'>  2</span>  * @fileoverview This file is to be used for testing the JSDoc parser
+<span class='line'>  3</span>  * It is not intended to be an example of good JavaScript OO-programming,
+<span class='line'>  4</span>  * nor is it intended to fulfill any specific purpose apart from 
+<span class='line'>  5</span>  * demonstrating the functionality of the 
+<span class='line'>  6</span>  * &lt;a href='http://sourceforge.net/projects/jsdoc'>JSDoc&lt;/a> parser
+<span class='line'>  7</span>  *
+<span class='line'>  8</span>  * @author Gabriel Reid gab_reid@users.sourceforge.net
+<span class='line'>  9</span>  * @version 0.1 
+<span class='line'> 10</span>  */</span><span class="WHIT">
+<span class='line'> 11</span> 
+<span class='line'> 12</span> 
+<span class='line'> 13</span> </span><span class="COMM">/**
+<span class='line'> 14</span>  * Construct a new Shape object.
+<span class='line'> 15</span>  * @class This is the basic Shape class.  
+<span class='line'> 16</span>  * It can be considered an abstract class, even though no such thing
+<span class='line'> 17</span>  * really existing in JavaScript
+<span class='line'> 18</span>  * @constructor
+<span class='line'> 19</span>  * @throws MemoryException if there is no more memory 
+<span class='line'> 20</span>  * @throws GeneralShapeException rarely (if ever)
+<span class='line'> 21</span>  * @return {Shape|Coordinate} A new shape.
+<span class='line'> 22</span>  */</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Shape</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">  </span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">   </span><span class="COMM">/**
+<span class='line'> 26</span>     * This is an example of a function that is not given as a property
+<span class='line'> 27</span>     * of a prototype, but instead it is assigned within a constructor.
+<span class='line'> 28</span>     * For inner functions like this to be picked up by the parser, the
+<span class='line'> 29</span>     * function that acts as a constructor &lt;b>must&lt;/b> be denoted with
+<span class='line'> 30</span>     * the &lt;b>&#64;constructor&lt;/b> tag in its comment.
+<span class='line'> 31</span>     * @type String
+<span class='line'> 32</span>     */</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">   </span><span class="NAME">this.getClassName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"Shape"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="WHIT">   </span><span class="COMM">/** 
+<span class='line'> 38</span>     * This is an inner method, just used here as an example
+<span class='line'> 39</span>     * @since version 0.5
+<span class='line'> 40</span>     * @author Sue Smart
+<span class='line'> 41</span>     */</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">   </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">addReference</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">       </span><span class="COMM">// Do nothing...</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">   </span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 47</span> 
+<span class='line'> 48</span> </span><span class="COMM">/**
+<span class='line'> 49</span>  * Create a new Hexagon instance.
+<span class='line'> 50</span>  * @extends Shape
+<span class='line'> 51</span>  * @class Hexagon is a class that is a &lt;i>logical&lt;/i> sublcass of 
+<span class='line'> 52</span>  * {@link Shape} (thanks to the &lt;code>&#64;extends&lt;/code> tag), but in 
+<span class='line'> 53</span>  * reality it is completely unrelated to Shape.
+<span class='line'> 54</span>  * @param {int} sideLength The length of one side for the new Hexagon
+<span class='line'> 55</span>  * @example
+<span class='line'> 56</span>  * var h = new Hexagon(2);
+<span class='line'> 57</span>  * @example
+<span class='line'> 58</span>  * if (hasHex) {
+<span class='line'> 59</span>  *     hex   = new Hexagon(5);
+<span class='line'> 60</span>  *     color = hex.getColor();
+<span class='line'> 61</span>  * }
+<span class='line'> 62</span>  */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Hexagon</span><span class="PUNC">(</span><span class="NAME">sideLength</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="COMM">/**
+<span class='line'> 68</span>  * This is an unattached (static) function that adds two integers together.
+<span class='line'> 69</span>  * @param {int} One The first number to add 
+<span class='line'> 70</span>  * @param {int} Two The second number to add 
+<span class='line'> 71</span>  * @author Gabriel Reid
+<span class='line'> 72</span>  * @deprecated So you shouldn't use it anymore! Use {@link Shape#getClassName} instead.
+<span class='line'> 73</span>  */</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Add</span><span class="PUNC">(</span><span class="NAME">One</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Two</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">One</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">Two</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 77</span> 
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="COMM">/**
+<span class='line'> 80</span>  * The color of this shape
+<span class='line'> 81</span>  * @type Color
+<span class='line'> 82</span>  */</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="NAME">Shape.prototype.color</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> 
+<span class='line'> 85</span> </span><span class="COMM">/**
+<span class='line'> 86</span>  * The border of this shape. 
+<span class='line'> 87</span>  * @field
+<span class='line'> 88</span>  * @type int
+<span class='line'> 89</span>  */</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="NAME">Shape.prototype.border</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">border</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> 
+<span class='line'> 92</span> </span><span class="COMM">/*
+<span class='line'> 93</span>  * These are all the instance method implementations for Shape
+<span class='line'> 94</span>  */</span><span class="WHIT">
+<span class='line'> 95</span> 
+<span class='line'> 96</span> </span><span class="COMM">/**
+<span class='line'> 97</span>  * Get the coordinates of this shape. It is assumed that we're always talking
+<span class='line'> 98</span>  * about shapes in a 2D location here.
+<span class='line'> 99</span>  * @requires The {@link Shape} class
+<span class='line'>100</span>  * @returns A Coordinate object representing the location of this Shape
+<span class='line'>101</span>  * @type Coordinate[]
+<span class='line'>102</span>  */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="NAME">Shape.prototype.getCoords</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.coords</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>106</span> 
+<span class='line'>107</span> </span><span class="COMM">/**
+<span class='line'>108</span>  * Get the color of this shape.
+<span class='line'>109</span>  * @see #setColor
+<span class='line'>110</span>  * @see The &lt;a href="http://example.com">Color&lt;/a> library.
+<span class='line'>111</span>  * @link Shape
+<span class='line'>112</span>  * @type Color
+<span class='line'>113</span>  */</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="NAME">Shape.prototype.getColor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.color</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>117</span> 
+<span class='line'>118</span> </span><span class="COMM">/**
+<span class='line'>119</span>  * Set the coordinates for this Shape
+<span class='line'>120</span>  * @param {Coordinate} coordinates The coordinates to set for this Shape
+<span class='line'>121</span>  */</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="NAME">Shape.prototype.setCoords</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">coordinates</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">   </span><span class="NAME">this.coords</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">coordinates</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="COMM">/**
+<span class='line'>127</span>  * Set the color for this Shape
+<span class='line'>128</span>  * @param {Color} color The color to set for this Shape
+<span class='line'>129</span>  * @param other There is no other param, but it can still be documented if
+<span class='line'>130</span>  *              optional parameters are used
+<span class='line'>131</span>  * @throws NonExistantColorException (no, not really!)
+<span class='line'>132</span>  * @see #getColor
+<span class='line'>133</span>  */</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="NAME">Shape.prototype.setColor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">color</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">   </span><span class="NAME">this.color</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">color</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>137</span> 
+<span class='line'>138</span> </span><span class="COMM">/**
+<span class='line'>139</span>  * Clone this shape
+<span class='line'>140</span>  * @returns A copy of this shape
+<span class='line'>141</span>  * @type Shape
+<span class='line'>142</span>  * @author Gabriel Reid
+<span class='line'>143</span>  */</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="NAME">Shape.prototype.clone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Shape</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>147</span> 
+<span class='line'>148</span> </span><span class="COMM">/**
+<span class='line'>149</span>  * Create a new Rectangle instance. 
+<span class='line'>150</span>  * @class A basic rectangle class, inherits from Shape.
+<span class='line'>151</span>  * This class could be considered a concrete implementation class
+<span class='line'>152</span>  * @constructor
+<span class='line'>153</span>  * @param {int} width The optional width for this Rectangle
+<span class='line'>154</span>  * @param {int} height Thie optional height for this Rectangle
+<span class='line'>155</span>  * @author Gabriel Reid
+<span class='line'>156</span>  * @see Shape is the base class for this
+<span class='line'>157</span>  * @augments Shape
+<span class='line'>158</span>  * @hilited
+<span class='line'>159</span>  */</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Rectangle</span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// This is the width </span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">                  </span><span class="NAME">height</span><span class="WHIT"> </span><span class="COMM">// This is the height</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">                  </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">   </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">      </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">width</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">height</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">	 </span><span class="NAME">this.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>170</span> 
+<span class='line'>171</span> 
+<span class='line'>172</span> </span><span class="COMM">/* Inherit from Shape */</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="NAME">Rectangle.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Shape</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>174</span> 
+<span class='line'>175</span> </span><span class="COMM">/**
+<span class='line'>176</span>  * Value to represent the width of the Rectangle.
+<span class='line'>177</span>  * &lt;br>Text in &lt;b>bold&lt;/b> and &lt;i>italic&lt;/i> and a 
+<span class='line'>178</span>  * link to &lt;a href="http://sf.net">SourceForge&lt;/a>
+<span class='line'>179</span>  * @private
+<span class='line'>180</span>  * @type int
+<span class='line'>181</span>  */</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="NAME">Rectangle.prototype.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> 
+<span class='line'>184</span> </span><span class="COMM">/**
+<span class='line'>185</span>  * Value to represent the height of the Rectangle
+<span class='line'>186</span>  * @private
+<span class='line'>187</span>  * @type int
+<span class='line'>188</span>  */</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="NAME">Rectangle.prototype.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> 
+<span class='line'>191</span> </span><span class="COMM">/**
+<span class='line'>192</span>  * Get the type of this object. 
+<span class='line'>193</span>  * @type String
+<span class='line'>194</span>  */</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="NAME">Rectangle.prototype.getClassName</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"Rectangle"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>198</span> 
+<span class='line'>199</span> </span><span class="COMM">/**
+<span class='line'>200</span>  * Get the value of the width for the Rectangle
+<span class='line'>201</span>  * @type int
+<span class='line'>202</span>  * @see Rectangle#setWidth
+<span class='line'>203</span>  */</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="NAME">Rectangle.prototype.getWidth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.width</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>207</span> 
+<span class='line'>208</span> </span><span class="COMM">/**
+<span class='line'>209</span>  * Get the value of the height for the Rectangle.
+<span class='line'>210</span>  * Another getter is the {@link Shape#getColor} method in the 
+<span class='line'>211</span>  * {@link Shape} base class.  
+<span class='line'>212</span>  * @return The height of this Rectangle
+<span class='line'>213</span>  * @type int
+<span class='line'>214</span>  * @see Rectangle#setHeight
+<span class='line'>215</span>  */</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="NAME">Rectangle.prototype.getHeight</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>219</span> 
+<span class='line'>220</span> </span><span class="COMM">/**
+<span class='line'>221</span>  * Set the width value for this Rectangle.
+<span class='line'>222</span>  * @param {int} width The width value to be set
+<span class='line'>223</span>  * @see #setWidth
+<span class='line'>224</span>  */</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="NAME">Rectangle.prototype.setWidth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">   </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">width</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>228</span> 
+<span class='line'>229</span> </span><span class="COMM">/**
+<span class='line'>230</span>  * Set the height value for this Rectangle.
+<span class='line'>231</span>  * @param {int} height The height value to be set
+<span class='line'>232</span>  * @see #getHeight
+<span class='line'>233</span>  */</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="NAME">Rectangle.prototype.setHeight</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">height</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">   </span><span class="NAME">this.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>237</span> 
+<span class='line'>238</span> </span><span class="COMM">/**
+<span class='line'>239</span>  * Get the value for the total area of this Rectangle
+<span class='line'>240</span>  * @return total area of this Rectangle
+<span class='line'>241</span>  * @type int
+<span class='line'>242</span>  */</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="NAME">Rectangle.prototype.getArea</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">width</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>246</span> 
+<span class='line'>247</span> 
+<span class='line'>248</span> </span><span class="COMM">/**
+<span class='line'>249</span>  * Create a new Square instance.
+<span class='line'>250</span>  * @class A Square is a subclass of {@link Rectangle}
+<span class='line'>251</span>  * @param {int} width The optional width for this Rectangle
+<span class='line'>252</span>  * @param {int} height The optional height for this Rectangle
+<span class='line'>253</span>  * @augments Rectangle
+<span class='line'>254</span>  */</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Square</span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">   </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">      </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">width</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">height</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">	 </span><span class="NAME">this.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">   </span><span class="WHIT">
+<span class='line'>263</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>264</span> 
+<span class='line'>265</span> </span><span class="COMM">/* Square is a subclass of Rectangle */</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="NAME">Square.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Rectangle</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>267</span> 
+<span class='line'>268</span> </span><span class="COMM">/**
+<span class='line'>269</span>  * Set the width value for this Shape.
+<span class='line'>270</span>  * @param {int} width The width value to be set
+<span class='line'>271</span>  * @see #getWidth
+<span class='line'>272</span>  */</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="NAME">Square.prototype.setWidth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">   </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">width</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>276</span> 
+<span class='line'>277</span> </span><span class="COMM">/**
+<span class='line'>278</span>  * Set the height value for this Shape 
+<span class='line'>279</span>  * Sets the {@link Rectangle#height} attribute in the Rectangle.
+<span class='line'>280</span>  * @param {int} height The height value to be set
+<span class='line'>281</span>  */</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="NAME">Square.prototype.setHeight</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">height</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">   </span><span class="NAME">this.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>285</span> 
+<span class='line'>286</span> 
+<span class='line'>287</span> </span><span class="COMM">/**
+<span class='line'>288</span>  * Create a new Circle instance based on a radius.
+<span class='line'>289</span>  * @class Circle class is another subclass of Shape
+<span class='line'>290</span>  * @extends Shape
+<span class='line'>291</span>  * @param {int} radius The optional radius of this {@link Circle }
+<span class='line'>292</span>  * @mixin Square.prototype.setWidth as this.setDiameter
+<span class='line'>293</span>  */</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Circle</span><span class="PUNC">(</span><span class="NAME">radius</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">   </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">radius</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">      </span><span class="COMM">/** The radius of the this Circle. */</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">      </span><span class="NAME">this.radius</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">radius</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>300</span> 
+<span class='line'>301</span> </span><span class="COMM">/* Circle inherits from {@link Shape} */</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="NAME">Circle.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Shape</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>303</span> 
+<span class='line'>304</span> </span><span class="COMM">/** 
+<span class='line'>305</span>  * The radius value for this Circle 
+<span class='line'>306</span>  * @private
+<span class='line'>307</span>  * @type int
+<span class='line'>308</span>  */</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="NAME">Circle.prototype.radius</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>310</span> 
+<span class='line'>311</span> </span><span class="COMM">/** 
+<span class='line'>312</span>  * A very simple class (static) field that is also a constant
+<span class='line'>313</span>  * @final
+<span class='line'>314</span>  * @type float
+<span class='line'>315</span>  */</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="NAME">Circle.PI</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">3.14</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> 
+<span class='line'>318</span> </span><span class="COMM">/**
+<span class='line'>319</span>  * Get the radius value for this Circle
+<span class='line'>320</span>  * @type int
+<span class='line'>321</span>  * @see #setRadius
+<span class='line'>322</span>  */</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="NAME">Circle.prototype.getRadius</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.radius</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>326</span> 
+<span class='line'>327</span> </span><span class="COMM">/** 
+<span class='line'>328</span>  * Set the radius value for this Circle
+<span class='line'>329</span>  * @param {int} radius The {@link Circle#radius} value to set
+<span class='line'>330</span>  * @see #getRadius
+<span class='line'>331</span>  */</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="NAME">Circle.prototype.setRadius</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">radius</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">   </span><span class="NAME">this.radius</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">radius</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>335</span> 
+<span class='line'>336</span> </span><span class="COMM">/** 
+<span class='line'>337</span>  * An example of a  class (static) method that acts as a factory for Circle
+<span class='line'>338</span>  * objects. Given a radius value, this method creates a new Circle.
+<span class='line'>339</span>  * @param {int} radius The radius value to use for the new Circle.
+<span class='line'>340</span>  * @type Circle
+<span class='line'>341</span>  */</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="NAME">Circle.createCircle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">radius</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Circle</span><span class="PUNC">(</span><span class="NAME">radius</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>345</span> 
+<span class='line'>346</span> 
+<span class='line'>347</span> </span><span class="COMM">/**
+<span class='line'>348</span>  * Create a new Coordinate instance based on x and y grid data.
+<span class='line'>349</span>  * @class Coordinate is a class that can encapsulate location information.
+<span class='line'>350</span>  * @param {int} [x=0] The optional x portion of the Coordinate
+<span class='line'>351</span>  * @param {int} [y=0] The optinal y portion of the Coordinate
+<span class='line'>352</span>  */</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Coordinate</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">   </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">      </span><span class="NAME">this.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">	 </span><span class="NAME">this.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>361</span> 
+<span class='line'>362</span> </span><span class="COMM">/** 
+<span class='line'>363</span>  * The x portion of the Coordinate 
+<span class='line'>364</span>  * @type int
+<span class='line'>365</span>  * @see #getX
+<span class='line'>366</span>  * @see #setX
+<span class='line'>367</span>  */</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="NAME">Coordinate.prototype.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>369</span> 
+<span class='line'>370</span> </span><span class="COMM">/** 
+<span class='line'>371</span>  * The y portion of the Coordinate 
+<span class='line'>372</span>  * @type int
+<span class='line'>373</span>  * @see #getY
+<span class='line'>374</span>  * @see #setY
+<span class='line'>375</span>  */</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="NAME">Coordinate.prototype.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>377</span> 
+<span class='line'>378</span> </span><span class="COMM">/**
+<span class='line'>379</span>  * Gets the x portion of the Coordinate.
+<span class='line'>380</span>  * @type int
+<span class='line'>381</span>  * @see #setX
+<span class='line'>382</span>  */</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="NAME">Coordinate.prototype.getX</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>386</span> 
+<span class='line'>387</span> </span><span class="COMM">/** 
+<span class='line'>388</span>  * Get the y portion of the Coordinate.
+<span class='line'>389</span>  * @type int
+<span class='line'>390</span>  * @see #setY
+<span class='line'>391</span>  */</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="NAME">Coordinate.prototype.getY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">   </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.y</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>395</span> 
+<span class='line'>396</span> </span><span class="COMM">/**
+<span class='line'>397</span>  * Sets the x portion of the Coordinate.
+<span class='line'>398</span>  * @param {int} x The x value to set
+<span class='line'>399</span>  * @see #getX
+<span class='line'>400</span>  */</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="NAME">Coordinate.prototype.setX</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">   </span><span class="NAME">this.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>404</span> 
+<span class='line'>405</span> </span><span class="COMM">/** 
+<span class='line'>406</span>  * Sets the y portion of the Coordinate.
+<span class='line'>407</span>  * @param {int} y The y value to set
+<span class='line'>408</span>  * @see #getY
+<span class='line'>409</span>  */</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="NAME">Coordinate.prototype.setY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">   </span><span class="NAME">this.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>413</span> 
+<span class='line'>414</span> </span><span class="COMM">/**
+<span class='line'>415</span>  * @class This class exists to demonstrate the assignment of a class prototype
+<span class='line'>416</span>  * as an anonymous block.
+<span class='line'>417</span>  */</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">ShapeFactory</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>420</span> 
+<span class='line'>421</span> </span><span class="NAME">ShapeFactory.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">   </span><span class="COMM">/** 
+<span class='line'>423</span>     * Creates a new {@link Shape} instance.
+<span class='line'>424</span>     * @return A new {@link Shape}
+<span class='line'>425</span>     * @type Shape
+<span class='line'>426</span>     */</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">   </span><span class="NAME">createShape</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Shape</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>431</span> 
+<span class='line'>432</span> </span><span class="COMM">/**
+<span class='line'>433</span>  * An example of a singleton class
+<span class='line'>434</span>  * @param ... Arguments represent {@link coordinate}s in the shape.
+<span class='line'>435</span>  * @constructor
+<span class='line'>436</span>  */</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="NAME">MySingletonShapeFactory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>438</span> 
+<span class='line'>439</span> </span><span class="WHIT">   </span><span class="COMM">/**
+<span class='line'>440</span>     * Get the next {@link Shape}
+<span class='line'>441</span>     * @type Shape
+<span class='line'>442</span>     * @return A new {@link Shape}
+<span class='line'>443</span>     */</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">   </span><span class="NAME">this.getShape</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>447</span> 
+<span class='line'>448</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>449</span> 
+<span class='line'>450</span> 
+<span class='line'>451</span> </span><span class="COMM">/** 
+<span class='line'>452</span>  * Create a new Foo instance.
+<span class='line'>453</span>  * @class This is the Foo class. It exists to demonstrate 'nested' classes.
+<span class='line'>454</span>  * @constructor 
+<span class='line'>455</span>  * @see Foo.Bar
+<span class='line'>456</span>  */</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Foo</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>458</span> 
+<span class='line'>459</span> </span><span class="COMM">/** 
+<span class='line'>460</span>  * Creates a new instance of Bar.
+<span class='line'>461</span>  * @class This class exists to demonstrate 'nested' classes.
+<span class='line'>462</span>  * @constructor 
+<span class='line'>463</span>  * @see Foo.Bar
+<span class='line'>464</span>  */</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Bar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>466</span> 
+<span class='line'>467</span> </span><span class="COMM">/** 
+<span class='line'>468</span>  * Nested class
+<span class='line'>469</span>  * @constructor 
+<span class='line'>470</span>  */</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="NAME">Foo.Bar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="WHIT">	</span><span class="COMM">/** The x. */</span><span class="WHIT"> </span><span class="NAME">this.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>474</span> 
+<span class='line'>475</span> </span><span class="NAME">Foo.Bar.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Bar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="COMM">/** The y. */</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>477</span> </span><span class="NAME">Foo.Bar.prototype.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'3'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>478</span> </span></pre></body></html>

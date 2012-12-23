@@ -1,0 +1,100 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span> 	@name String
+<span class='line'>  3</span> 	@class Additions to the core string object.
+<span class='line'>  4</span> */</span><span class="WHIT">
+<span class='line'>  5</span> 
+<span class='line'>  6</span> </span><span class="COMM">/** @author Steven Levithan, released as public domain. */</span><span class="WHIT">
+<span class='line'>  7</span> </span><span class="NAME">String.prototype.trim</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.replace</span><span class="PUNC">(</span><span class="REGX">/^\s+/</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="WHIT">	</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="REGX">/\S/</span><span class="PUNC">.</span><span class="NAME">test</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="WHIT">			</span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="WHIT">			</span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="COMM">/*t:
+<span class='line'> 18</span> 	plan(6, "Testing String.prototype.trim.");
+<span class='line'> 19</span> 	
+<span class='line'> 20</span> 	var s = "   a bc   ".trim();
+<span class='line'> 21</span> 	is(s, "a bc", "multiple spaces front and back are trimmed.");
+<span class='line'> 22</span> 
+<span class='line'> 23</span> 	s = "a bc\n\n".trim();
+<span class='line'> 24</span> 	is(s, "a bc", "newlines only in back are trimmed.");
+<span class='line'> 25</span> 	
+<span class='line'> 26</span> 	s = "\ta bc".trim();
+<span class='line'> 27</span> 	is(s, "a bc", "tabs only in front are trimmed.");
+<span class='line'> 28</span> 	
+<span class='line'> 29</span> 	s = "\n \t".trim();
+<span class='line'> 30</span> 	is(s, "", "an all-space string is trimmed to empty.");
+<span class='line'> 31</span> 	
+<span class='line'> 32</span> 	s = "a b\nc".trim();
+<span class='line'> 33</span> 	is(s, "a b\nc", "a string with no spaces in front or back is trimmed to itself.");
+<span class='line'> 34</span> 	
+<span class='line'> 35</span> 	s = "".trim();
+<span class='line'> 36</span> 	is(s, "", "an empty string is trimmed to empty.");
+<span class='line'> 37</span> 
+<span class='line'> 38</span> */</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span><span class="NAME">String.prototype.balance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">open</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">close</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">	</span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">open</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">		</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">balance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">	</span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.charAt</span><span class="PUNC">(</span><span class="NAME">j</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">open</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">balance</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.charAt</span><span class="PUNC">(</span><span class="NAME">j</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">close</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">balance</span><span class="PUNC">--</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">balance</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">		</span><span class="NAME">j</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="COMM">/*t:
+<span class='line'> 60</span> 	plan(16, "Testing String.prototype.balance.");
+<span class='line'> 61</span> 	
+<span class='line'> 62</span> 	var s = "{abc}".balance("{","}");
+<span class='line'> 63</span> 	is(s[0], 0, "opener in first is found.");
+<span class='line'> 64</span> 	is(s[1], 4, "closer in last is found.");
+<span class='line'> 65</span> 	
+<span class='line'> 66</span> 	s = "ab{c}de".balance("{","}");
+<span class='line'> 67</span> 	is(s[0], 2, "opener in middle is found.");
+<span class='line'> 68</span> 	is(s[1], 4, "closer in middle is found.");
+<span class='line'> 69</span> 	
+<span class='line'> 70</span> 	s = "a{b{c}de}f".balance("{","}");
+<span class='line'> 71</span> 	is(s[0], 1, "nested opener is found.");
+<span class='line'> 72</span> 	is(s[1], 8, "nested closer is found.");
+<span class='line'> 73</span> 	
+<span class='line'> 74</span> 	s = "{}".balance("{","}");
+<span class='line'> 75</span> 	is(s[0], 0, "opener with no content is found.");
+<span class='line'> 76</span> 	is(s[1], 1, "closer with no content is found.");
+<span class='line'> 77</span> 	
+<span class='line'> 78</span> 	s = "".balance("{","}");
+<span class='line'> 79</span> 	is(s[0], -1, "empty string opener is -1.");
+<span class='line'> 80</span> 	is(s[1], -1, "empty string closer is -1.");
+<span class='line'> 81</span> 	
+<span class='line'> 82</span> 	s = "{abc".balance("{","}");
+<span class='line'> 83</span> 	is(s[0], -1, "opener with no closer returns -1.");
+<span class='line'> 84</span> 	is(s[1], -1, "no closer returns -1.");
+<span class='line'> 85</span> 	
+<span class='line'> 86</span> 	s = "abc".balance("{","}");
+<span class='line'> 87</span> 	is(s[0], -1, "no opener or closer returns -1 for opener.");
+<span class='line'> 88</span> 	is(s[1], -1, "no opener or closer returns -1 for closer.");
+<span class='line'> 89</span> 	
+<span class='line'> 90</span> 	s = "a&lt;bc}de".balance("&lt;","}");
+<span class='line'> 91</span> 	is(s[0], 1, "unmatching opener is found.");
+<span class='line'> 92</span> 	is(s[1], 4, "unmatching closer is found.");
+<span class='line'> 93</span> */</span></pre></body></html>

@@ -1,0 +1,61 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @name Kitchen
+<span class='line'>  3</span>  * @constructor
+<span class='line'>  4</span>  * @fires Bakery#event:donutOrdered
+<span class='line'>  5</span>  */</span><span class="WHIT">
+<span class='line'>  6</span> 
+<span class='line'>  7</span> </span><span class="COMM">/**
+<span class='line'>  8</span>  * Fired when some cake is eaten.
+<span class='line'>  9</span>  * @name Kitchen#event:cakeEaten
+<span class='line'> 10</span>  * @function
+<span class='line'> 11</span>  * @param {Number} pieces The number of pieces eaten.
+<span class='line'> 12</span>  */</span><span class="WHIT">
+<span class='line'> 13</span> 
+<span class='line'> 14</span> </span><span class="COMM">/**
+<span class='line'> 15</span>  * Find out if cake was eaten.
+<span class='line'> 16</span>  * @name Kitchen#cakeEaten
+<span class='line'> 17</span>  * @function
+<span class='line'> 18</span>  * @param {Boolean} wasEaten
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="COMM">/**
+<span class='line'> 22</span>  * @name getDesert
+<span class='line'> 23</span>  * @function
+<span class='line'> 24</span>  * @fires Kitchen#event:cakeEaten
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="COMM">/**
+<span class='line'> 28</span>  * @name Bakery
+<span class='line'> 29</span>  * @constructor
+<span class='line'> 30</span>  * @extends Kitchen
+<span class='line'> 31</span>  */</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="COMM">/**
+<span class='line'> 34</span>  * Fired when a donut order is made.
+<span class='line'> 35</span>  * @name Bakery#event:donutOrdered
+<span class='line'> 36</span>  * @event
+<span class='line'> 37</span>  * @param {Event} e The event object.
+<span class='line'> 38</span>  * @param {String} [e.topping] Optional sprinkles.
+<span class='line'> 39</span>  */</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="COMM">/**
+<span class='line'> 42</span>  * @constructor
+<span class='line'> 43</span>  * @borrows Bakery#event:donutOrdered as this.event:cakeOrdered
+<span class='line'> 44</span>  */</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">CakeShop</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 47</span> 
+<span class='line'> 48</span> </span><span class="COMM">/** @event */</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="NAME">CakeShop.prototype.icingReady</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">isPink</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 51</span> 
+<span class='line'> 52</span> </span><span class="COMM">/** @event */</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">amHungry</span><span class="PUNC">(</span><span class="COMM">/**Boolean*/</span><span class="NAME">enoughToEatAHorse</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="PUNC">}</span></pre></body></html>
