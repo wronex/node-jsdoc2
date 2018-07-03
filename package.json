@@ -5,12 +5,15 @@
 	},
 	"name": "jsdoc2",
 	"description": "A port of JSDoc2 Toolkit that runs on Node",
-	"version": "2.4.0",
+	"version": "2.4.1",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/wronex/node-jsdoc2.git"
 	},
 	"homepage": "http://wronex.github.com/node-jsdoc2",
+	"bin": {
+		"jsdoc2": "./app/run.js"
+	},
 	"contributors": [
 		{
 			"name": "wronex",
